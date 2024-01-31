@@ -10,4 +10,5 @@
     <string name="you_won">You won!</string>
     <string name="you_lost">You lost!</string>
     <string name="the_word_was">" The word was %1$s"</string>
+    <string name="finish_game_button">Finish game</string>
 </resources>

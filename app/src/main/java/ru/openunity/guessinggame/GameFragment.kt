@@ -24,18 +24,9 @@ class GameFragment : Fragment() {
         _binding = FragmentGameBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModel = ViewModelProvider(this)[GameViewModel::class.java]
-        viewModel.livesLeft.observe(viewLifecycleOwner) {
-            binding.lives.text = getString(R.string.lives_left, viewModel.livesLeft.value.toString())
-        }
-        viewModel.incorrectGuess.observe(viewLifecycleOwner) {
-            binding.incorrectGuesses.text =
-            if (viewModel.incorrectGuess.value?.isNotBlank() == true) {
-                getString(R.string.incorrect_guesses, viewModel.incorrectGuess.value)
-            } else ""
-        }
-        viewModel.secretWordDisplay.observe(viewLifecycleOwner) {
-            binding.word.text = viewModel.secretWordDisplay.value
-        }
+        binding.gameViewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
         viewModel.gameOver.observe(viewLifecycleOwner) { newValue ->
             if (newValue) {
                 val action = GameFragmentDirections

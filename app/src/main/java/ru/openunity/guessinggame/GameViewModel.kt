@@ -13,9 +13,9 @@ class GameViewModel : ViewModel() {
     private val _secretWordDisplay: MutableLiveData<String> = MutableLiveData()
     val secretWordDisplay: LiveData<String>
         get() = _secretWordDisplay
-    private val _incorrectGuess: MutableLiveData<String> = MutableLiveData("")
-    val incorrectGuess: LiveData<String>
-        get() = _incorrectGuess
+    private val _incorrectGuesses: MutableLiveData<String> = MutableLiveData("")
+    val incorrectGuesses: LiveData<String>
+        get() = _incorrectGuesses
     private val _livesLeft:MutableLiveData<Int> = MutableLiveData(9)
     val livesLeft: LiveData<Int>
         get() = _livesLeft
@@ -58,10 +58,14 @@ class GameViewModel : ViewModel() {
                 correctGuess += guess
                 _secretWordDisplay.value = deriveSecretWordDisplay()
             } else {
-                _incorrectGuess.value = (_incorrectGuess.value ?: "") + "$guess "
+                _incorrectGuesses.value = (_incorrectGuesses.value ?: "") + "$guess "
                 _livesLeft.value = _livesLeft.value?.dec()
             }
             if (isWon() || isLost()) _gameOver.value = true
         }
+    }
+
+    fun finishGame() {
+        _gameOver.value = true
     }
 }
