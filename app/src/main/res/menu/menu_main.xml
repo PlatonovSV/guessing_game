@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/gameFragment"
+        android:icon="@drawable/toys_and_games"
+        android:title="@string/menu_game"/>
+    <item
+        android:id="@+id/questionsFragment"
+        android:icon="@drawable/settings"
+        android:title="@string/menu_questions"/>
+</menu>
