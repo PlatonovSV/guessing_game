@@ -12,4 +12,7 @@
     <string name="finish_game_button">Finish game</string>
     <string name="menu_game">game</string>
     <string name="menu_questions">questions</string>
+    <string name="hint_question">question</string>
+    <string name="hint_answer">answer</string>
+    <string name="button_save_question">Save question</string>
 </resources>
