@@ -15,4 +15,7 @@
     <string name="hint_question">question</string>
     <string name="hint_answer">answer</string>
     <string name="button_save_question">Save question</string>
+    <string name="the_minimum_length_of_the_question_is_characters">The minimum length of the question is %d characters</string>
+    <string name="the_minimum_answer_length_is_characters">The minimum answer length is %d characters</string>
+    <string name="the_minimum_answer_length_is_characters_and_for_the_question">The minimum answer length is %1$d characters and %2$d for the question</string>
 </resources>

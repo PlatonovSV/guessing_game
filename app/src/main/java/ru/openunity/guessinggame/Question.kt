@@ -12,5 +12,7 @@ data class Question(
     @ColumnInfo(name = "question")
     var question: String = "",
     @ColumnInfo(name = "answer")
-    var answer: Boolean = true
+    var answer: String = "",
+    @ColumnInfo(name = "is_active")
+    var isActive: Boolean = true
 )

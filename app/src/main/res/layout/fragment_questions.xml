@@ -4,7 +4,9 @@
     tools:context=".QFragment">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="ru.openunity.guessinggame.QuestionViewModel" />
     </data>
 
     <LinearLayout
@@ -15,17 +17,6 @@
         android:gravity="center_vertical">
 
         <EditText
-            android:id="@+id/word"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="no"
-            android:hint="@string/hint_answer"
-            android:inputType="text"
-            android:minHeight="48dp"
-            android:textColorHint="#546E7A"
-            android:padding="16dp" />
-
-        <EditText
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,19 +25,34 @@
             android:inputType="text"
             android:minHeight="48dp"
             android:textColorHint="#546E7A"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:text="@={viewModel.questionText}"/>
+
+        <EditText
+            android:id="@+id/word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="no"
+            android:hint="@string/hint_answer"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="#546E7A"
+            android:padding="16dp"
+            android:text="@={viewModel.answer}"/>
 
         <Button
             android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/button_save_question" />
+            android:text="@string/button_save_question"
+            android:onClick="@{() -> viewModel.addQuestion()}"/>
 
         <TextView
             android:id="@+id/db_questions"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.questionsString}"/>
 
     </LinearLayout>
 </layout>
