@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".QFragment">
 
     <data>
@@ -48,11 +49,13 @@
             android:text="@string/button_save_question"
             android:onClick="@{() -> viewModel.addQuestion()}"/>
 
-        <TextView
-            android:id="@+id/db_questions"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/questions_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.questionsString}"/>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
     </LinearLayout>
 </layout>

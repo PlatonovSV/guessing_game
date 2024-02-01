@@ -54,6 +54,13 @@ class QuestionsFragment : Fragment() {
                 viewModel.toastShows()
             }
         }
+        val adapter = QuestionItemAdapter()
+        binding.questionsList.adapter = adapter
+        viewModel.questions.observe(viewLifecycleOwner) {
+            it?.let {
+                adapter.data = it
+            }
+        }
         return binding.root
     }
 
