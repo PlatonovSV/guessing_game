@@ -58,7 +58,7 @@ class QuestionsFragment : Fragment() {
         binding.questionsList.adapter = adapter
         viewModel.questions.observe(viewLifecycleOwner) {
             it?.let {
-                adapter.data = it
+                adapter.submitList(it)
             }
         }
         return binding.root
