@@ -65,6 +65,7 @@ class QuestionsFragment : Fragment() {
                 val action =
                     QuestionsFragmentDirections.actionQuestionsFragmentToEditQuestionFragment(it)
                 view.findNavController().navigate(action)
+                viewModel.onQuestionNavigated()
             }
         }
         binding.questionsList.adapter = adapter

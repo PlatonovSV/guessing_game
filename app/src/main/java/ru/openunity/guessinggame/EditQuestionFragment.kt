@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import ru.openunity.guessinggame.databinding.FragmentEditQuestionBinding
 
+
 class EditQuestionFragment : Fragment() {
     private var _binding: FragmentEditQuestionBinding? = null
     val binding: FragmentEditQuestionBinding

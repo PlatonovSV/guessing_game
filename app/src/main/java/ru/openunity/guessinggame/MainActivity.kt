@@ -3,6 +3,7 @@ package ru.openunity.guessinggame
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import ru.openunity.guessinggame.databinding.ActivityMainBinding
 
@@ -20,5 +21,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNav.setupWithNavController(navController)
 
+        val builder = AppBarConfiguration.Builder(navController.graph)
+        val appBarConfiguration = builder.build()
+        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 }

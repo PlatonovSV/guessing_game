@@ -11,13 +11,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="16dp">
+        android:layout_height="match_parent">
 
         <EditText
             android:id="@+id/question_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:autofillHints="no"
             android:ems="10"
             android:gravity="start|top"
@@ -28,7 +28,7 @@
             android:text="@={viewModel.question.question}"
             android:textColorHint="#546E7A"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,6 +36,7 @@
             android:id="@+id/answer_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:autofillHints="no"
             android:ems="10"
             android:gravity="start|top"
@@ -93,6 +94,7 @@
             android:layout_width="118dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:onClick="@{() -> viewModel.cancel()}"
             android:text="@string/button_cancel"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"

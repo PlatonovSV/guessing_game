@@ -19,11 +19,16 @@ class EditQuestionViewModel(questionId: Long, val dao: QuestionDao) : ViewModel(
             _navigateToList.value = true
         }
     }
+
     fun deleteQuestion() {
         viewModelScope.launch {
             dao.delete(question.value!!)
             _navigateToList.value = true
         }
+    }
+
+    fun cancel() {
+        _navigateToList.value = true
     }
 
     fun onNavigatedToList() {

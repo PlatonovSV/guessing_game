@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/gameFragment"
         android:name="ru.openunity.guessinggame.GameFragment"
-        android:label="fragment_game"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_game" >
         <action
             android:id="@+id/action_gameFragment_to_resultFragment"
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/resultFragment"
         android:name="ru.openunity.guessinggame.ResultFragment"
-        android:label="fragment_result"
+        android:label="Result"
         tools:layout="@layout/fragment_result" >
         <argument
             android:name="result"
@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/questionsFragment"
         android:name="ru.openunity.guessinggame.QuestionsFragment"
-        android:label="QuestionsFragment" >
+        android:label="Questions" >
         <action
             android:id="@+id/action_questionsFragment_to_editQuestionFragment"
             app:destination="@id/editQuestionFragment" />
@@ -42,7 +42,7 @@
     <fragment
         android:id="@+id/editQuestionFragment"
         android:name="ru.openunity.guessinggame.EditQuestionFragment"
-        android:label="fragment_edit_question"
+        android:label="Edit question"
         tools:layout="@layout/fragment_edit_question" >
         <argument
             android:name="questionId"
