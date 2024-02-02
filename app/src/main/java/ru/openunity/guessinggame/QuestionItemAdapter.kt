@@ -2,8 +2,9 @@ package ru.openunity.guessinggame
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.widget.CheckBox
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
 class QuestionItemAdapter : RecyclerView.Adapter<QuestionItemAdapter.QuestionItemViewHolder>() {
@@ -23,22 +24,25 @@ class QuestionItemAdapter : RecyclerView.Adapter<QuestionItemAdapter.QuestionIte
         holder.bind(item)
     }
 
-    class QuestionItemViewHolder(private val rootView: LinearLayout) : RecyclerView.ViewHolder(rootView) {
+    class QuestionItemViewHolder(rootView: CardView) :
+        RecyclerView.ViewHolder(rootView) {
+        private val questionView: TextView = rootView.findViewById(R.id.question)
+        private val answerView: TextView = rootView.findViewById(R.id.answer)
+        private val isActiveView: CheckBox = rootView.findViewById(R.id.is_active)
+
         companion object {
             fun inflateFrom(parent: ViewGroup): QuestionItemViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val view =
-                    layoutInflater.inflate(R.layout.question_item, parent, false) as LinearLayout
+                    layoutInflater.inflate(R.layout.question_item, parent, false) as CardView
                 return QuestionItemViewHolder(view)
             }
         }
+
         fun bind(item: Question) {
-            val question = rootView.findViewById<TextView>(R.id.question)
-            question.text = item.question
-            val answer = rootView.findViewById<TextView>(R.id.answer)
-            answer.text = item.answer
-
-
+            questionView.text = item.question
+            answerView.text = item.answer
+            isActiveView.isChecked = item.isActive
         }
     }
 }
