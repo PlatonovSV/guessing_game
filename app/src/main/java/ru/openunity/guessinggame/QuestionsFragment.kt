@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import ru.openunity.guessinggame.databinding.FragmentQuestionsBinding
 
 class QuestionsFragment : Fragment() {
@@ -54,14 +55,25 @@ class QuestionsFragment : Fragment() {
                 viewModel.toastShows()
             }
         }
-        val adapter = QuestionItemAdapter()
+        val view = binding.root
+
+        val adapter = QuestionItemAdapter { id ->
+            viewModel.onQuestionClicked(id)
+        }
+        viewModel.navigateToQuestion.observe(viewLifecycleOwner) {
+            it?.let {
+                val action =
+                    QuestionsFragmentDirections.actionQuestionsFragmentToEditQuestionFragment(it)
+                view.findNavController().navigate(action)
+            }
+        }
         binding.questionsList.adapter = adapter
         viewModel.questions.observe(viewLifecycleOwner) {
             it?.let {
                 adapter.submitList(it)
             }
         }
-        return binding.root
+        return view
     }
 
     override fun onDestroyView() {

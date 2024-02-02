@@ -19,7 +19,17 @@ class QuestionViewModel(private val dao: QuestionDao) : ViewModel() {
 
     val questions = dao.getAll()
 
+    private val _navigateToQuestion = MutableLiveData<Long?>()
+    val navigateToQuestion: LiveData<Long?>
+        get() = _navigateToQuestion
 
+
+    fun onQuestionClicked(taskId: Long) {
+        _navigateToQuestion.value = taskId
+    }
+    fun onQuestionNavigated() {
+        _navigateToQuestion.value = null
+    }
     fun toastShows() {
         _showToast.value = false
     }

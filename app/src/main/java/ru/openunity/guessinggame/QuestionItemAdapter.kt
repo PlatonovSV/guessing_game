@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.openunity.guessinggame.databinding.QuestionItemBinding
 
-class QuestionItemAdapter :
+class QuestionItemAdapter(val clickListener: (Long) -> Unit) :
     ListAdapter<Question, QuestionItemAdapter.QuestionItemViewHolder>(QuestionDiffItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionItemViewHolder =
@@ -15,7 +15,7 @@ class QuestionItemAdapter :
 
     override fun onBindViewHolder(holder: QuestionItemViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, clickListener)
     }
 
     class QuestionItemViewHolder(private val binding: QuestionItemBinding) :
@@ -29,8 +29,9 @@ class QuestionItemAdapter :
             }
         }
 
-        fun bind(item: Question) {
+        fun bind(item: Question, clickListener: (Long) -> Unit) {
             binding.question = item
+            binding.root.setOnClickListener { clickListener(item.id) }
         }
     }
 }

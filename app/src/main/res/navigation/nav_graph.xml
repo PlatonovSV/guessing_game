@@ -34,5 +34,23 @@
     <fragment
         android:id="@+id/questionsFragment"
         android:name="ru.openunity.guessinggame.QuestionsFragment"
-        android:label="QuestionsFragment" />
+        android:label="QuestionsFragment" >
+        <action
+            android:id="@+id/action_questionsFragment_to_editQuestionFragment"
+            app:destination="@id/editQuestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editQuestionFragment"
+        android:name="ru.openunity.guessinggame.EditQuestionFragment"
+        android:label="fragment_edit_question"
+        tools:layout="@layout/fragment_edit_question" >
+        <argument
+            android:name="questionId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_editQuestionFragment_to_questionsFragment"
+            app:destination="@id/questionsFragment"
+            app:popUpTo="@id/questionsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

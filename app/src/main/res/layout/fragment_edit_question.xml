@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="ru.openunity.guessinggame.EditQuestionViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
+
+        <EditText
+            android:id="@+id/question_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints="no"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/hint_question"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:padding="16dp"
+            android:text="@={viewModel.question.question}"
+            android:textColorHint="#546E7A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/answer_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints="no"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/hint_answer"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:padding="16dp"
+            android:text="@={viewModel.question.answer}"
+            android:textColorHint="#546E7A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question_text" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:checked="@={viewModel.question.active}"
+            android:text="@string/switch_show"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answer_text" />
+
+        <Button
+            android:id="@+id/button_apply"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="@{() -> viewModel.updateQuestion()}"
+            android:text="@string/button_apply"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/button_delete"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_cancel" />
+
+        <Button
+            android:id="@+id/button_delete"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#F44336"
+            android:onClick="@{() -> viewModel.deleteQuestion()}"
+            android:text="@string/button_delete"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/button_apply"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button_apply"
+            app:layout_constraintTop_toTopOf="@+id/button_apply" />
+
+        <Button
+            android:id="@+id/button_cancel"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/button_cancel"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switch_show" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
