@@ -5,7 +5,7 @@
     <data>
         <variable
             name="question"
-            type="ru.openunity.guessinggame.Question" />
+            type="ru.openunity.guessinggame.data.Question" />
     </data>
     <androidx.cardview.widget.CardView
 

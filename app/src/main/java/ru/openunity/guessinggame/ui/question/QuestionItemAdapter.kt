@@ -1,9 +1,10 @@
-package ru.openunity.guessinggame
+package ru.openunity.guessinggame.ui.question
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import ru.openunity.guessinggame.data.Question
 import ru.openunity.guessinggame.databinding.QuestionItemBinding
 
 class QuestionItemAdapter(val clickListener: (Long) -> Unit) :

@@ -1,4 +1,4 @@
-package ru.openunity.guessinggame
+package ru.openunity.guessinggame.ui.game
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import ru.openunity.guessinggame.data.QuestionDatabase
 import ru.openunity.guessinggame.databinding.FragmentGameBinding
 
 class GameFragment : Fragment() {
@@ -23,7 +24,12 @@ class GameFragment : Fragment() {
     ): View {
         _binding = FragmentGameBinding.inflate(inflater, container, false)
         val view = binding.root
-        viewModel = ViewModelProvider(this)[GameViewModel::class.java]
+
+        val application = requireNotNull(this.activity).application
+        val dao = QuestionDatabase.getInstance(application).questionDao
+        val viewModelFactory = GameViewModelFactory(dao)
+        viewModel = ViewModelProvider(this, viewModelFactory)[GameViewModel::class.java]
+
         binding.gameViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
@@ -35,12 +41,15 @@ class GameFragment : Fragment() {
             }
         }
 
-
+        viewModel.allQuestions.observe(viewLifecycleOwner) {
+            viewModel.updateData(it)
+        }
 
         binding.guessButton.setOnClickListener {
             viewModel.makeGuess(binding.guess.text.toString().uppercase())
             binding.guess.text = null
         }
+
         return view
     }
 

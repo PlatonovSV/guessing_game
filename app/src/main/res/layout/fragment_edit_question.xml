@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="ru.openunity.guessinggame.EditQuestionViewModel" />
+            type="ru.openunity.guessinggame.ui.edit.EditQuestionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

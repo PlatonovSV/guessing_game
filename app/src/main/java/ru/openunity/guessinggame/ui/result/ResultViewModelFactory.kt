@@ -1,4 +1,4 @@
-package ru.openunity.guessinggame
+package ru.openunity.guessinggame.ui.result
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

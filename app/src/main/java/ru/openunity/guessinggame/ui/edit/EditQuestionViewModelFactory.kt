@@ -1,7 +1,8 @@
-package ru.openunity.guessinggame
+package ru.openunity.guessinggame.ui.edit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import ru.openunity.guessinggame.data.QuestionDao
 import java.lang.IllegalArgumentException
 
 class EditQuestionViewModelFactory(

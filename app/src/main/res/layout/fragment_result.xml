@@ -2,11 +2,11 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ResultFragment">
+    tools:context=".ui.result.ResultFragment">
     <data>
         <variable
             name="resultViewModel"
-            type="ru.openunity.guessinggame.ResultViewModel" />
+            type="ru.openunity.guessinggame.ui.result.ResultViewModel" />
     </data>
 <LinearLayout
     android:layout_width="match_parent"

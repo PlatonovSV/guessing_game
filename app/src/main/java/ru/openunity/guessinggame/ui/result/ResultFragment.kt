@@ -1,4 +1,4 @@
-package ru.openunity.guessinggame
+package ru.openunity.guessinggame.ui.result
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import ru.openunity.guessinggame.R
 import ru.openunity.guessinggame.databinding.FragmentResultBinding
 
 class ResultFragment : Fragment() {
     private var _binding: FragmentResultBinding? = null
     private val binding
         get() = _binding!!
-    private lateinit var viewModelFactory:ResultViewModelFactory
+    private lateinit var viewModelFactory: ResultViewModelFactory
     private lateinit var viewModel: ResultViewModel
 
     override fun onCreateView(

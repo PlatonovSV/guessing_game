@@ -1,4 +1,4 @@
-package ru.openunity.guessinggame
+package ru.openunity.guessinggame.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -22,4 +22,7 @@ interface QuestionDao {
 
     @Query("SELECT * FROM question_table ORDER BY id DESC")
     fun getAll(): LiveData<List<Question>>
+
+    @Query("SELECT * FROM question_table WHERE is_active = :isActive ORDER BY id DESC")
+    fun getAllActive(isActive: Boolean = true): LiveData<List<Question>>
 }

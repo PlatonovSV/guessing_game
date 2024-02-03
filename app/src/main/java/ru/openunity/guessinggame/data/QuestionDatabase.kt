@@ -1,4 +1,4 @@
-package ru.openunity.guessinggame
+package ru.openunity.guessinggame.data
 
 import android.content.Context
 import androidx.room.Database

@@ -1,4 +1,4 @@
-package ru.openunity.guessinggame
+package ru.openunity.guessinggame.ui.question
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import ru.openunity.guessinggame.data.Question
+import ru.openunity.guessinggame.data.QuestionDao
 
 class QuestionViewModel(private val dao: QuestionDao) : ViewModel() {
     var questionText = ""

@@ -1,4 +1,4 @@
-package ru.openunity.guessinggame
+package ru.openunity.guessinggame.ui.edit
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import ru.openunity.guessinggame.R
+import ru.openunity.guessinggame.data.QuestionDatabase
 import ru.openunity.guessinggame.databinding.FragmentEditQuestionBinding
 
 

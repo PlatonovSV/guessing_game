@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="ru.openunity.guessinggame.QuestionViewModel" />
+            type="ru.openunity.guessinggame.ui.question.QuestionViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
