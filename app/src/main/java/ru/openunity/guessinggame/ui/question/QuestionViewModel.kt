@@ -10,8 +10,8 @@ import ru.openunity.guessinggame.data.Question
 import ru.openunity.guessinggame.data.QuestionDao
 
 class QuestionViewModel(private val dao: QuestionDao) : ViewModel() {
-    var questionText = ""
-    var answer = ""
+    var questionText = MutableLiveData("")
+    var answer = MutableLiveData("")
     private val _showToast: MutableLiveData<Boolean> = MutableLiveData(false)
     val showToast: LiveData<Boolean>
         get() = _showToast
@@ -37,15 +37,17 @@ class QuestionViewModel(private val dao: QuestionDao) : ViewModel() {
     }
     fun addQuestion() {
         if (
-            questionText.length >= minimumQuestionLength
-            && answer.length >= minimumAnswerLength
+            questionText.value!!.length >= minimumQuestionLength
+            && answer.value!!.length >= minimumAnswerLength
         ) {
             viewModelScope.launch {
                 val question = Question(
-                    question = questionText,
-                    answer = answer
+                    question = questionText.value!!,
+                    answer = answer.value!!
                 )
                 dao.insert(question)
+                questionText.value = ""
+                answer.value = ""
             }
         } else {
             _showToast.value = true
