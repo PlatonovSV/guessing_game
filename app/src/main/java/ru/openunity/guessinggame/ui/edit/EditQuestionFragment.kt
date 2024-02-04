@@ -51,6 +51,10 @@ class EditQuestionFragment : BottomSheetDialogFragment() {
         binding.cancelButton.setOnClickListener {
             dismiss()
         }
+        binding.deleteButton.setOnClickListener {
+            viewModel.deleteQuestion()
+            dismiss()
+        }
     }
 
     override fun onDestroyView() {
