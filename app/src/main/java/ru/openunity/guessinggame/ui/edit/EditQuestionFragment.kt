@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
-import ru.openunity.guessinggame.R
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ru.openunity.guessinggame.data.QuestionDatabase
 import ru.openunity.guessinggame.databinding.FragmentEditQuestionBinding
 
 
-class EditQuestionFragment : Fragment() {
+class EditQuestionFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentEditQuestionBinding? = null
     val binding: FragmentEditQuestionBinding
         get() = _binding!!
@@ -32,14 +31,26 @@ class EditQuestionFragment : Fragment() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        val view = binding.root
-        viewModel.navigateToList.observe(viewLifecycleOwner) { navigate ->
-            if (navigate) {
-                view.findNavController().navigate(R.id.action_editQuestionFragment_to_questionsFragment)
-                viewModel.onNavigatedToList()
-            }
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.questionText.doOnTextChanged { _, start, _, count ->
+            // Enable Save button if the current text is longer than 10 characters
+            binding.saveButton.isEnabled = (start+count) > 10
         }
-        return view
+        binding.answerText.doOnTextChanged { _, start, _, count ->
+            // Enable Save button if the current text is longer than 3 characters
+            binding.saveButton.isEnabled = (start+count) > 3
+        }
+        binding.saveButton.setOnClickListener {
+            viewModel.updateQuestion()
+            dismiss()
+        }
+        binding.cancelButton.setOnClickListener {
+            dismiss()
+        }
     }
 
     override fun onDestroyView() {

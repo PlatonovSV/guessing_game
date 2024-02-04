@@ -39,7 +39,7 @@
             android:id="@+id/action_questionsFragment_to_editQuestionFragment"
             app:destination="@id/editQuestionFragment" />
     </fragment>
-    <fragment
+    <dialog
         android:id="@+id/editQuestionFragment"
         android:name="ru.openunity.guessinggame.ui.edit.EditQuestionFragment"
         android:label="Edit question"
@@ -52,5 +52,5 @@
             app:destination="@id/questionsFragment"
             app:popUpTo="@id/questionsFragment"
             app:popUpToInclusive="true" />
-    </fragment>
+    </dialog>
 </navigation>

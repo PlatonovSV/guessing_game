@@ -22,5 +22,7 @@
     <string name="switch_show">show</string>
     <string name="button_apply">apply</string>
     <string name="button_delete">delete</string>
-    <string name="button_cancel">cancel</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="edit_question">Edit the question</string>
+    <string name="save">Save</string>
 </resources>
