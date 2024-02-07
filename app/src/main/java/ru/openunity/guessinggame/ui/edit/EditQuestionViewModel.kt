@@ -15,9 +15,4 @@ class EditQuestionViewModel(questionId: Long, val dao: QuestionDao) : ViewModel(
         }
     }
 
-    fun deleteQuestion() {
-        viewModelScope.launch {
-            dao.delete(question.value!!)
-        }
-    }
 }

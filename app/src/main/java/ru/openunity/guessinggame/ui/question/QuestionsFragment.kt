@@ -60,9 +60,11 @@ class QuestionsFragment : Fragment() {
         }
         val view = binding.root
 
-        val adapter = QuestionListAdapter({ id ->
-            viewModel.onQuestionClicked(id.id)
-        },{})
+        val adapter = QuestionListAdapter({ question ->
+            viewModel.onQuestionClicked(question.id)
+        }, { question ->
+            viewModel.deleteQuestion(question)
+        })
         viewModel.navigateToQuestion.observe(viewLifecycleOwner) {
             it?.let {
                 val action =

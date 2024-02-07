@@ -53,4 +53,10 @@ class QuestionViewModel(private val dao: QuestionDao) : ViewModel() {
             _showToast.value = true
         }
     }
+
+    fun deleteQuestion(question: Question) {
+        viewModelScope.launch {
+            dao.delete(question)
+        }
+    }
 }
