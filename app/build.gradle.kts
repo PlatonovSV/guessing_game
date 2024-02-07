@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
 
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp") version "1.9.0-1.0.13"
 }
 
 android {
@@ -12,6 +12,11 @@ android {
 
     buildFeatures {
         dataBinding = true
+        // Enables Jetpack Compose for this module
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.8"
     }
 
     defaultConfig {
@@ -34,11 +39,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
+        freeCompilerArgs += "-opt-in=androidx.compose.material.ExperimentalMaterialApi"
     }
 }
 
@@ -51,15 +57,18 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.cardview:cardview:1.0.0")
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
+    implementation("androidx.navigation:navigation-fragment-ktx:${rootProject.extra["nav_version"]}")
+    implementation("androidx.navigation:navigation-ui-ktx:${rootProject.extra["nav_version"]}")
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
-    kapt("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-runtime:${rootProject.extra["room_version"]}")
+    implementation("androidx.room:room-ktx:${rootProject.extra["room_version"]}")
+    implementation("androidx.compose.foundation:foundation-android:1.6.0")
+    implementation("androidx.compose.material3:material3:1.1.2")
+    implementation("com.google.accompanist:accompanist-themeadapter-material3:0.28.0")
+    ksp("androidx.room:room-compiler:${rootProject.extra["room_version"]}")
 
 
 

@@ -25,4 +25,5 @@
     <string name="button_cancel">Cancel</string>
     <string name="edit_question">Edit the question</string>
     <string name="save">Save</string>
+    <string name="delete">delete question</string>
 </resources>

@@ -31,7 +31,8 @@ class QuestionsFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         viewModel.showToast.observe(viewLifecycleOwner) { newValue ->
-            val questionLess = viewModel.questionText.value!!.length < viewModel.minimumQuestionLength
+            val questionLess =
+                viewModel.questionText.value!!.length < viewModel.minimumQuestionLength
             val answerLess = viewModel.answer.value!!.length < viewModel.minimumAnswerLength
             if (newValue) {
                 val toastText = when {
@@ -59,9 +60,9 @@ class QuestionsFragment : Fragment() {
         }
         val view = binding.root
 
-        val adapter = QuestionItemAdapter { id ->
-            viewModel.onQuestionClicked(id)
-        }
+        val adapter = QuestionListAdapter({ id ->
+            viewModel.onQuestionClicked(id.id)
+        },{})
         viewModel.navigateToQuestion.observe(viewLifecycleOwner) {
             it?.let {
                 val action =
